@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap';
 
 class ProductItem extends Component {

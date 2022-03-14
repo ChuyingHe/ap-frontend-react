@@ -5,7 +5,7 @@ class APNavigator extends Component {
   state = {};
   render() {
     return (
-      <Navbar bg="light" expand="lg">
+      <Navbar style={{ marginBottom: "20px" }} bg="light" expand="lg">
         <Container fluid>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -16,6 +16,10 @@ class APNavigator extends Component {
             >
               <Nav.Link href="/products">
                 Product
+              </Nav.Link>
+
+              <Nav.Link href="/productdetail">
+                ProductDetail
               </Nav.Link>
 
               <Nav.Link href="/about">

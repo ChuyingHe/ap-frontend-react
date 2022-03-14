@@ -11,6 +11,7 @@ import Contact from './onepage/Contact';
 import APNavigator from './shared/navigator';
 import APHeader from './shared/header';
 import ProductList from './product/ProductList';
+import ProductDetail from './product/ProductDetail';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,6 +23,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="products" element={<ProductList />} />
+        <Route path="productdetail" element={<ProductDetail />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route
