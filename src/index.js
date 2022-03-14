@@ -4,10 +4,31 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './custom.scss';
+import {
+  BrowserRouter,
+  IndexRoute,
+  Routes,
+  Route,
+} from 'react-router-dom';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      {/* <Routes>
+        <Route path="/" element={<App />}>
+          <IndexRoute element={App} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+      </Routes> */}
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
