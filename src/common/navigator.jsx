@@ -19,6 +19,7 @@ class APNavigator extends Component {
                 Product
               </Nav.Link>
               <Nav.Link href="/about">
+                About
                 {/* <Link to="/about">About</Link> |{' '} */}
               </Nav.Link>
               {/* <NavDropdown title="Link" id="navbarScrollingDropdown">

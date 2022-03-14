@@ -4,13 +4,10 @@ class About extends Component {
   render() {
     return (
       <>
-        {alert("et")}
         {console.log('about')}
         <div style={{ padding: '1rem 0' }}>
-          <h2>ABOUT</h2>
-        </div>
-        ABOUT PAGE
-        
+          <h2>ABOUT PAGE</h2>
+        </div>       
       </>
     );
   }

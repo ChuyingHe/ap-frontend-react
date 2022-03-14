@@ -18,8 +18,11 @@
 
 export default function Contact() {
   return (
-    <main style={{ padding: "1rem 0" }}>
-      <h2>Contact</h2>
-    </main>
+    <>
+        {console.log('Contact')}
+        <div style={{ padding: '1rem 0' }}>
+          <h2>CONTACT PAGE</h2>
+        </div>       
+      </>
   );
 }
