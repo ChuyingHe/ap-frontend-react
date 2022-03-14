@@ -6,8 +6,8 @@ class App extends Component {
   render() {
     return (
       <div>
+        {/* LANDING HOME PAGE */}
         <h1>Bookkeeper</h1>
-        {/* <APNavigator></APNavigator> */}
       </div>
     );
   }

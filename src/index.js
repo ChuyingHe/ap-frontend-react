@@ -6,18 +6,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './custom.scss';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import APNavigator from './common/navigator';
-import APHeader from './common/header';
+import About from './onepage/About';
+import Contact from './onepage/Contact';
+import APNavigator from './shared/navigator';
+import APHeader from './shared/header';
+import ProductList from './product/ProductList';
 
 ReactDOM.render(
   <React.StrictMode>
     <APHeader />
     <APNavigator />
+
+    {/* Router: https://reactrouter.com/docs/en/v6/getting-started/tutorial */}
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="products" element={<ProductList />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route
