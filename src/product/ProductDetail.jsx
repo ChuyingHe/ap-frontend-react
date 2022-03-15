@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Image, Badge, Stack, Card } from 'react-bootstrap';
+import axios from 'axios';
 
 class ProductDetail extends Component {
-    state = {  } 
+    state = {
+        products:[]  
+    } 
+
+    componentDidMount() {
+        this.getProducts();
+    }
+
+    async getProducts() {
+        const res = await axios.get('/api/products');
+        const products = await res;
+        this.setState({products: products})
+        console.log("PRODUCT", this.state.products)
+    }
+
     render() { 
         return (<>
         <Container>
