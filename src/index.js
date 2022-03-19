@@ -8,10 +8,13 @@ import reportWebVitals from './reportWebVitals';
 import './custom.scss';
 import About from './onepage/About';
 import Contact from './onepage/Contact';
-import APNavigator from './shared/navigator';
-import APHeader from './shared/header';
+import APNavigator from './shared/Navigator';
+import APHeader from './shared/Header';
 import ProductList from './product/ProductList';
 import ProductDetail from './product/ProductDetail';
+import Profile from './account/Profile';
+import Favorite from './account/Favorite';
+import ShoppingCart from './order/ShoppingCart';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -26,6 +29,11 @@ ReactDOM.render(
         <Route path="productdetail" element={<ProductDetail />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
+
+        <Route path="profile" element={<Profile />} />
+        <Route path="favorite" element={<Favorite />} />
+        <Route path="shopping-cart" element={<ShoppingCart />} />
+
         <Route
           path="*"
           element={

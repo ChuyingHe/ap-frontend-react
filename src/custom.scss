@@ -6,3 +6,170 @@ $body-bg: #fff;
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
+
+
+
+// Font: JosefinSans
+@font-face {
+    font-family: "JosefinSansBold";
+    src: local("JosefinSansBold"),
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-Bold.ttf") format("truetype");
+    // font-weight: bold;
+}
+.font-josefin-bold {
+    font-family: "JosefinSansBold";
+}
+
+
+@font-face {
+    font-family: "JosefinSansMedium";
+    src: local("JosefinSansMedium"), 
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-Medium.ttf") format("truetype");
+}
+.font-josefinSans-medium {
+    font-family: "JosefinSansMedium";
+}
+
+
+@font-face {
+    font-family: "JosefinSansMediumItalic";
+    src: local("JosefinSansMediumItalic"), 
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-MediumItalic.ttf") format("truetype");
+}
+.font-josefinSans-mediumItalic {
+    font-family: "JosefinSansMediumItalic";
+}
+
+
+@font-face {
+    font-family: "JosefinSansExtraLight";
+    src: local("JosefinSansExtraLight"), 
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-ExtraLight.ttf") format("truetype");
+}
+.font-josefinSans-extraLight {
+    font-family: "JosefinSansExtraLight";
+}
+
+
+@font-face {
+    font-family: "JosefinSansRegular";
+    src: local("JosefinSansRegular"), 
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-Regular.ttf") format("truetype");
+}
+.font-josefinSans-regular {
+    font-family: "JosefinSansRegular";
+}
+
+
+@font-face {
+font-family: "JosefinSansSemiBoldItalic";
+src: local("JosefinSansSemiBoldItalic"), 
+url("./asset/fonts/Josefin_Sans/static/JosefinSans-SemiBoldItalic.ttf") format("truetype");
+}
+.font-josefinSans-semiBoldItalic {
+  font-family: "JosefinSansSemiBoldItalic";
+}
+
+@font-face {
+    font-family: "JosefinSansBoldItalic";
+    src: local("JosefinSansBoldItalic"),
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-BoldItalic.ttf") format("truetype");
+    // font-weight: bold;
+}
+.font-josefin-bold {
+    font-family: "JosefinSansBoldItalic";
+}
+
+@font-face {
+font-family: "JosefinSans-SemiBold";
+src: local("JosefinSans-SemiBold"), 
+url("./asset/fonts/Josefin_Sans/static/JosefinSans-SemiBold.ttf") format("truetype");
+}
+.font-josefinSans-SemiBold {
+    font-family: "JosefinSans-SemiBold";
+}
+
+
+@font-face {
+    font-family: "JosefinSansLight";
+    src: local("JosefinSansLight"), 
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-Light.ttf") format("truetype");
+}
+.font-josefinSans-light {
+    font-family: "JosefinSansLight";
+}
+
+@font-face {
+    font-family: "JosefinSansExtraLight";
+    src: local("JosefinSansExtraLight"),
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-ExtraLight.ttf") format("truetype");
+    // font-weight: bold;
+}
+.font-josefin-extraLight {
+    font-family: "JosefinSansExtraLight";
+}
+
+
+@font-face {
+    font-family: "JosefinSansExtraLightItalic";
+    src: local("JosefinSansExtraLightItalic"),
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-ExtraLightItalic.ttf") format("truetype");
+    // font-weight: bold;
+}
+.font-josefin-extraLightItalic {
+    font-family: "JosefinSansExtraLightItalic";
+}
+
+@font-face {
+    font-family: "JosefinSansItalic";
+    src: local("JosefinSansItalic"),
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-Italic.ttf") format("truetype");
+    // font-weight: bold;
+}
+.font-josefin-italic {
+    font-family: "JosefinSansItalic";
+}
+
+
+@font-face {
+    font-family: "JosefinSansLight";
+    src: local("JosefinSansLight"),
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-Light.ttf") format("truetype");
+    // font-weight: bold;
+}
+.font-josefin-light {
+    font-family: "JosefinSansLight";
+}
+
+
+@font-face {
+    font-family: "JosefinSansThin";
+    src: local("JosefinSansThin"),
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-Thin.ttf") format("truetype");
+    // font-weight: bold;
+}
+.font-josefin-thin {
+    font-family: "JosefinSansThin";
+}
+
+
+
+@font-face {
+    font-family: "JosefinSansThinItalic";
+    src: local("JosefinSansThinItalic"), 
+    url("./asset/fonts/Josefin_Sans/static/JosefinSans-ThinItalic.ttf") format("truetype");
+}
+.font-josefinSans-thinItalic {
+    font-family: "JosefinSansThinItalic";
+}
+
+
+// Font: Lobster
+@font-face {
+    font-family: "LobsterRegular";
+    src: local("LobsterRegular"), 
+    url("./asset/fonts/Lobster/Lobster-Regular.ttf") format("truetype");
+}
+.font-josefinSans-lobsterRegular {
+    font-family: "LobsterRegular";
+}
