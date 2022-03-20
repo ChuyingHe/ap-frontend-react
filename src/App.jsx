@@ -6,7 +6,7 @@ class App extends Component {
   state = {};
   render() {
     return (
-      <div>
+      <div className="font-josefin-medium">
         {/* LANDING HOME PAGE */}
         <h1>Bookkeeper</h1>
 

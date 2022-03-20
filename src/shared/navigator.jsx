@@ -9,7 +9,7 @@ class APNavigator extends Component {
   state = {};
   render() {
     return (
-      <Navbar style={{ marginBottom: "20px" }} bg="light" expand="lg">
+      <Navbar style={{ marginBottom: "20px" }} bg="light" expand="lg" className='font-josefin-medium'>
         <Container fluid>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">

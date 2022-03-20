@@ -1,90 +1,96 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react';
 import { Container, Row, Col, Image, Badge, Stack, Carousel, Button } from 'react-bootstrap';
 import './_ProductDetail.scss'
+import { useLocation } from 'react-router-dom';
 
-class ProductDetail extends Component {
-    state = {}
+export default function ProductDetail(){
+    const location = useLocation();
+    const [product, setProduct] = useState(location?.state?.product)
 
-    render() { 
-        return (<>
-        <Container>
-            <Row>
-                <Col>
-                    <Carousel>
-                        <Carousel.Item>
+    function componentDidMount() {
+    }
+
+
+    return (<>
+    <Container>
+        <Row>
+            <Col>
+                <Carousel>
+                    {product?.attributes?.media?.data.map((item, index)=>{
+                        return <Carousel.Item>
                             <img
                             className="d-block w-100"
-                            src="https://picsum.photos/300/300"
+                            src={process.env.REACT_APP_STRAPI_LOCAL+item?.attributes?.url}
                             alt="First slide"
                             />
                         </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                            className="d-block w-100"
-                            src="https://picsum.photos/300/300"
-                            alt="Second slide"
-                            />
-                        </Carousel.Item>
-                    </Carousel>
+                    })}
+                    {/* <Carousel.Item>
+                        <img
+                        className="d-block w-100"
+                        src="https://picsum.photos/300/300"
+                        alt="First slide"
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                        className="d-block w-100"
+                        src="https://picsum.photos/300/300"
+                        alt="Second slide"
+                        />
+                    </Carousel.Item> */}
+                </Carousel>
 
-                </Col>
-                <Col>
-                    {/* TODO: width vw */}
-                    <div>
-                        <Badge bg="dark" className='detail-mb'>Seife</Badge>
-                        <h1>Kaffee seife</h1>
+            </Col>
+            <Col>
+                {/* TODO: width vw */}
+                <div>
+                    <Badge bg="dark" className='detail-mb'>Seife</Badge>
+                    <h1>{product?.attributes?.name}</h1>
 
-                        <div className='detail-mb'>This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap. This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap. </div>
+                    <div className='detail-mb'>{product?.attributes?.description} </div>
 
-                        {/* EFFECT */}
-                        <Stack className='detail-mb' direction="horizontal" gap={3}>
-                            <Badge bg="success">Pure skin</Badge>
-                            <Badge bg="success">Deep Cleaning</Badge>
-                            <Badge bg="success">Peeling</Badge>
-                        </Stack>
+                    {/* EFFECT */}
+                    <Stack className='detail-mb' direction="horizontal" gap={3}>
+                        {product?.attributes?.ingredients.map((item, index) => {
+                            return <Badge bg="success">{item}</Badge>
+                        })}
+                    </Stack>
 
-                        {/* TODO: tsparticles: https://www.npmjs.com/package/react-tsparticles */}
-                        <div className="d-grid gap-2">
-                            <Button variant="secondary" size="lg">
-                                Legen in Einkaufwagen
-                            </Button>
-                        </div>
+                    {/* TODO: tsparticles: https://www.npmjs.com/package/react-tsparticles */}
+                    <div className="d-grid gap-2">
+                        <Button variant="secondary" size="lg">
+                            In den Einkaufwagen
+                        </Button>
                     </div>
+                </div>
 
-                </Col>
-            </Row>
+            </Col>
+        </Row>
 
-            <Row>
-                <Col>
-                    <div className='detail-mb'>This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap. This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap.This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap. This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap.This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap. This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap. 
-                            This is the description of the soap. </div>
+        <Row>
+            <Col>
+                <div className='detail-mb'>This is the description of the soap. 
+                        This is the description of the soap. 
+                        This is the description of the soap. 
+                        This is the description of the soap. This is the description of the soap. 
+                        This is the description of the soap. 
+                        This is the description of the soap. 
+                        This is the description of the soap.This is the description of the soap. 
+                        This is the description of the soap. 
+                        This is the description of the soap. This is the description of the soap. 
+                        This is the description of the soap. 
+                        This is the description of the soap. 
+                        This is the description of the soap.This is the description of the soap. 
+                        This is the description of the soap. 
+                        This is the description of the soap. This is the description of the soap. 
+                        This is the description of the soap. 
+                        This is the description of the soap. 
+                        This is the description of the soap. </div>
 
-                </Col>
-            </Row>
-        </Container>
-        </>);
-    }
+            </Col>
+        </Row>
+    </Container>
+    </>);
+    
 }
- 
-export default ProductDetail;

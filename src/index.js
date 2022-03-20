@@ -22,11 +22,11 @@ ReactDOM.render(
     <APNavigator />
 
     {/* Router: https://reactrouter.com/docs/en/v6/getting-started/tutorial */}
-    <BrowserRouter>
+    <BrowserRouter className="font-josefin-medium">
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="products" element={<ProductList />} />
-        <Route path="productdetail" element={<ProductDetail />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
 

@@ -6,13 +6,13 @@ function Profile() {
         <Container>
             <Row>
                 <Col>
-                    <h3 className='font-josefin-light'>PERSONAL INFORMATION</h3>
+                    <h3>PERSONAL INFORMATION</h3>
                     <div></div>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <h3 className='font-josefin-light'>ORDERS HISTORY</h3>
+                    <h3>ORDERS HISTORY</h3>
                     <div>
                         <Table responsive="sm">
                             <thead>
