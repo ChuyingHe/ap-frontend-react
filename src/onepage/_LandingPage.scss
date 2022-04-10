@@ -1,0 +1,18 @@
+.landingpage-col-full {
+  padding: 0;
+}
+.landingpage-title {
+  position: absolute;
+  top: 50vh;
+  left: 20vh;
+}
+.reveal {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+.reveal.active {
+  transform: translateY(0);
+  opacity: 1;
+}
