@@ -9,7 +9,6 @@ import About from './onepage/About';
 import Contact from './onepage/Contact';
 import Profile from './account/Profile';
 import Favorite from './account/Favorite';
-import ShoppingCart from './order/ShoppingCart';
 import APHeader from './shared/Header';
 import APNavigator from './shared/Navigator';
 
@@ -31,7 +30,6 @@ const App: React.FC = () => {
 
         <Route path="profile" element={<Profile />} />
         <Route path="favorite" element={<Favorite />} />
-        <Route path="shopping-cart" element={<ShoppingCart />} />
 
         <Route
           path="*"
