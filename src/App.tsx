@@ -14,7 +14,8 @@ import APHeader from './shared/Header';
 import APNavigator from './shared/Navigator';
 
 const App: React.FC = () => {
-  return ( <div className="font-josefin-medium">
+  return (
+    <div className="font-josefin-medium">
         {/* LANDING HOME PAGE */}
         <h1>Bookkeeper</h1>
         <APHeader />
@@ -43,7 +44,8 @@ const App: React.FC = () => {
       </Routes>
     </BrowserRouter>
         <LandingPage></LandingPage>
-      </div> );
+      </div>
+  );
 }
 
 export default App;

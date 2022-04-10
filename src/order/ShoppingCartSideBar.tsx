@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
-function ShoppingCartSideBar({ name, ...props }) {
+function ShoppingCartSideBar({ name, ...props }: {name: string} & any) {
   const [show, setShow] = useState<boolean>(false);
 
   const handleClose = () => setShow(false);

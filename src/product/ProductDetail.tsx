@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import { Container, Row, Col, Image, Badge, Stack, Carousel, Button } from 'react-bootstrap';
 import './_ProductDetail.scss'
 import { useLocation } from 'react-router-dom';
+import { Product } from '../types/ProductsModel';
 
 export default function ProductDetail(){
     const location = useLocation();
-    const [product, setProduct] = useState(location?.state?.product)
+    const [product, setProduct] = useState((location?.state as any)?.product as any);
 
     function componentDidMount() {
     }
@@ -16,7 +17,7 @@ export default function ProductDetail(){
         <Row>
             <Col>
                 <Carousel>
-                    {product?.attributes?.media?.data.map((item, index)=>{
+                    {product?.attributes?.media?.data.map((item: any, index: number)=>{
                         return <Carousel.Item>
                             <img
                             className="d-block w-100"
@@ -52,7 +53,7 @@ export default function ProductDetail(){
 
                     {/* EFFECT */}
                     <Stack className='detail-mb' direction="horizontal" gap={3}>
-                        {product?.attributes?.ingredients.map((item, index) => {
+                        {product?.attributes?.ingredients.map((item: any, index: number) => {
                             return <Badge bg="success">{item}</Badge>
                         })}
                     </Stack>
