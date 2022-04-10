@@ -5,18 +5,20 @@ import { useNavigate } from "react-router-dom";
 
 
 
-export default function ProductItem({product}){
-    console.log("ProductItem", product?.attributes);
+export default function ProductItem({product}: any){
     // state = { firstPictureUrl: "" } 
-    const [firstUrl, setFristUrl] = useState(process.env.REACT_APP_STRAPI_LOCAL + product?.attributes?.media?.data[0]?.attributes?.url)
+    const [firstUrl, setFristUrl] = useState<string>('')
     console.log("firstUrl", firstUrl)
     let navigate = useNavigate(); 
 
-
+    // todo fix setFirstUrl
     async function getProductDetail(event, id) {
         try{
             const res = await axios.get(process.env.REACT_APP_STRAPI_LOCAL + '/api/products/'+id+'?populate=media')
-            const productData = await res.data.data;
+            const productData: any = await res.data.data;
+            
+            setFristUrl(process.env.REACT_APP_STRAPI_LOCAL + product?.attributes?.media?.data[0]?.attributes?.url)
+
             console.log("productData", productData)
             navigate("../products/"+id, {state:{product: productData}})
         } catch {

@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProductItem from './ProductItem';
 import { Col, Container, Row } from 'react-bootstrap';
+import { Product } from '../types/ProductsModel';
 
 function ProductList() {
-    const [products, setProducts] = useState([]);
+const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        console.log("Useeffect")
+       
         const productUrl = process.env.REACT_APP_STRAPI_LOCAL +'/api/products?populate=media';
 
         axios.get(productUrl).then((response) => {
+            console.log("", response);
             setProducts(response.data.data);
         });
         

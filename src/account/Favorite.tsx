@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-function Favorite() {
+const Favorite: React.FC = () => {
     return ( <>
         <div>Favorite</div>
     </> );
