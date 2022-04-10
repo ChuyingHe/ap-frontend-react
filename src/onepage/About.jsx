@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
-class About extends Component {
-  state = {};
-  render() {
-    return (
+function About () {
+  return (
       <>
         {console.log('about')}
         <div style={{ padding: '1rem 0' }}>
@@ -10,7 +7,6 @@ class About extends Component {
         </div>       
       </>
     );
-  }
 }
 
 export default About;
