@@ -1,6 +1,6 @@
 import './App.css';
-import React, { Component } from 'react';
-import ShoppingCartSideBar from "./order/ShoppingCartSideBar"
+import React, { useState } from 'react';
+import ShoppingCartSideBar from './order/ShoppingCartSideBar';
 import LandingPage from './onepage/LandingPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductDetail from './product/ProductDetail';
@@ -13,37 +13,41 @@ import APHeader from './shared/Header';
 import APNavigator from './shared/Navigator';
 
 const App: React.FC = () => {
+  // TODO: context: https://reactjs.org/docs/context.html
+  // const showCart = React.createContext(false);
+
   return (
     <div className="font-josefin-medium">
-        {/* LANDING HOME PAGE */}
-        <h1>Bookkeeper</h1>
-        <APHeader />
-        <APNavigator />
-        {/* TODO: this should be the "Shopping cart buttons" */}
-        <ShoppingCartSideBar placement={"end"} name={"Shopping Cart"} />
-        <BrowserRouter >
-      <Routes>
-        <Route path="products" element={<ProductList />} />
-        <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
+      <h1>Bookkeeper</h1>
+      <APHeader />
+      <APNavigator />
+      <LandingPage></LandingPage>
 
-        <Route path="profile" element={<Profile />} />
-        <Route path="favorite" element={<Favorite />} />
+      <ShoppingCartSideBar />
 
-        <Route
-          path="*"
-          element={
-            <main style={{ padding: '1rem' }}>
-              <p>There's nothing here!</p>
-            </main>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
-        <LandingPage></LandingPage>
-      </div>
+      {/* this is just a router */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="products" element={<ProductList />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+
+          <Route path="profile" element={<Profile />} />
+          <Route path="favorite" element={<Favorite />} />
+
+          <Route
+            path="*"
+            element={
+              <main style={{ padding: '1rem' }}>
+                <p>There's nothing here!</p>
+              </main>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
-}
+};
 
 export default App;

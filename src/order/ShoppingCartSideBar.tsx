@@ -1,9 +1,12 @@
 // TODO: OffCanvas
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
-import Offcanvas from 'react-bootstrap/Offcanvas'
+import Offcanvas from 'react-bootstrap/Offcanvas';
 
-function ShoppingCartSideBar({ name, ...props }: {name: string} & any) {
+function ShoppingCartSideBar({
+  name,
+  ...props
+}: { name: string } & any) {
   const [show, setShow] = useState<boolean>(false);
 
   const handleClose = () => setShow(false);
@@ -14,29 +17,22 @@ function ShoppingCartSideBar({ name, ...props }: {name: string} & any) {
       <Button variant="primary" onClick={handleShow} className="me-2">
         {name}
       </Button>
-      {/* <Offcanvas show={show} onHide={handleClose} {...props}>
+      <Offcanvas
+        show={show}
+        onHide={handleClose}
+        placement={'end'}
+        name={'Shopping Cart'}
+      >
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          Some text as placeholder. In real life you can have the
+          elements you have chosen. Like, text, images, lists, etc.
         </Offcanvas.Body>
-      </Offcanvas> */}
+      </Offcanvas>
     </>
   );
 }
 
 export default ShoppingCartSideBar;
-
-// function ShoppingCartSideBar() {
-//   return (
-//     <>
-//       {['start', 'end', 'top', 'bottom'].map((placement, idx) => (
-//         <OffCanvasExample key={idx} placement={placement} name={placement} />
-//       ))}
-//     </>
-//   );
-// }
-
-// export default ShoppingCartSideBar;
