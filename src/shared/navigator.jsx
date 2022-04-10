@@ -22,7 +22,7 @@ class APNavigator extends Component {
                 Product
               </Nav.Link>
 
-              <Nav.Link href="/productdetail">
+              <Nav.Link href="/products/1">
                 ProductDetail
               </Nav.Link>
 
