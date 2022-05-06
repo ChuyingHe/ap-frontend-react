@@ -28,7 +28,7 @@ export default function ProductItem({product}: any){
 
     
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card >
             <Card.Img variant="top" src={firstUrl} />
             <Card.Body>
                 <Card.Title>{product?.attributes?.name}</Card.Title>

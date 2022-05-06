@@ -1,8 +1,7 @@
 import './App.css';
-import React, { Component } from 'react';
-import ShoppingCartSideBar from './order/ShoppingCartSideBar';
+import React from 'react';
 import LandingPage from './onepage/LandingPage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ProductDetail from './product/ProductDetail';
 import ProductList from './product/ProductList';
 import About from './onepage/About';
@@ -16,15 +15,16 @@ import APNavigator from './shared/Navigator';
 const App: React.FC = () => {
   return (
     <div className="font-josefin-medium">
-      {/* LANDING HOME PAGE */}
-      <APHeader />
-      <APNavigator />
-      {/* TODO: this should be the "Shopping cart buttons" */}
-      {/* <ShoppingCartSideBar placement={'end'} name={'Shopping Cart'} /> */}
-
       <BrowserRouter>
+        {/* LANDING HOME PAGE */}
+        <APHeader />
+        <APNavigator />
+        {/* TODO: this should be the "Shopping cart buttons" */}
+        {/* <ShoppingCartSideBar placement={'end'} name={'Shopping Cart'} /> */}
+
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/home" element={<LandingPage />} />
+          <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path="products" element={<ProductList />} />
           <Route path="products/:id" element={<ProductDetail />} />
           <Route path="about" element={<About />} />

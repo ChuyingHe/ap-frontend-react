@@ -12,7 +12,6 @@ const [products, setProducts] = useState<Product[]>([]);
         const productUrl = process.env.REACT_APP_STRAPI_LOCAL +'/api/products?populate=media';
 
         axios.get(productUrl).then((response) => {
-            console.log("", response);
             setProducts(response.data.data);
         });
         
@@ -21,17 +20,15 @@ const [products, setProducts] = useState<Product[]>([]);
     console.log("products=", products)
     
     return (
-        <>
-            <Container>
-                <Row spacing={3}>
-                    {
-                        products && products.map((item, index) => {
-                            return <Col lg={4} md={4} sm={4} xs={6}> <ProductItem product={item} /> </Col>
-                        })
-                    }
-                </Row>
-            </Container>
-         </>
+        <Container className="pt-3">
+            <Row className="g-3"  >
+                {
+                    products && products.map((item, index) => {
+                        return <Col lg={3} md={4} sm={6} xs={12} key={index}> <ProductItem product={item} /> </Col>
+                    })
+                }
+            </Row>
+        </Container>
      );
 }
 

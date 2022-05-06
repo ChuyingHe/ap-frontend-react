@@ -4,21 +4,19 @@ import './_LandingPage.scss';
 
 function LandingPage() {
   return (
-    <>
       <Container fluid className="font-josefinSans-medium">
         <Row>
           <Col className="landingpage-col-full">
             <h1 className="landingpage-title">
               This is our landingpage
             </h1>
-            <Image
+            {/* <Image
               fluid
               src="/images/nadia-clabassi-JWCGHZcNXB4-unsplash.jpeg"
-            ></Image>
+            ></Image> */}
           </Col>
         </Row>
       </Container>
-    </>
   );
 }
 

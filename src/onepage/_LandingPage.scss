@@ -1,10 +1,16 @@
 .landingpage-col-full {
   padding: 0;
+  background-image: url("../../public/images/nadia-clabassi-JWCGHZcNXB4-unsplash.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70vh;
+  background-position: top;
 }
 .landingpage-title {
-  position: absolute;
-  top: 50vh;
-  left: 20vh;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 40%;
 }
 .reveal {
   position: relative;
