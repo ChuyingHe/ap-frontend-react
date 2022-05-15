@@ -10,7 +10,8 @@ import Profile from './account/Profile';
 import Favorite from './account/Favorite';
 import ShoppingCart from './order/ShoppingCart';
 import APHeader from './shared/Header';
-import APNavigator from './shared/Navigator';
+import Navigation from './shared/Navigator';
+import { WithProductsContext } from './context/ProductsContext';
 
 const App: React.FC = () => {
   return (
@@ -18,15 +19,19 @@ const App: React.FC = () => {
       <BrowserRouter>
         {/* LANDING HOME PAGE */}
         <APHeader />
-        <APNavigator />
+        <WithProductsContext><Navigation /></WithProductsContext>
         {/* TODO: this should be the "Shopping cart buttons" */}
         {/* <ShoppingCartSideBar placement={'end'} name={'Shopping Cart'} /> */}
 
-        <Routes>
+         <Routes>
           <Route path="/home" element={<LandingPage />} />
           <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route path="products" element={<ProductList />} />
-          <Route path="products/:id" element={<ProductDetail />} />
+
+            <Route path="products" element={<Navigate replace to="products/:1" />} />  
+            <Route path="products/:id" element={ <WithProductsContext><ProductList /></WithProductsContext>} />
+          
+            {/* <Route path="products/:id" element={<ProductDetail />} /> */}
+
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
 
@@ -42,7 +47,7 @@ const App: React.FC = () => {
               </main>
             }
           />
-        </Routes>
+        </Routes> 
       </BrowserRouter>
     </div>
   );

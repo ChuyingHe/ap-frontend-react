@@ -12,13 +12,13 @@ export default function ProductDetail(){
     }
 
 
-    return (<>
-    <Container>
+    return (
+    <Container className="pt-3">
         <Row>
             <Col>
                 <Carousel>
                     {product?.attributes?.media?.data.map((item: any, index: number)=>{
-                        return <Carousel.Item>
+                        return <Carousel.Item key={index}>
                             <img
                             className="d-block w-100"
                             src={process.env.REACT_APP_STRAPI_LOCAL+item?.attributes?.url}
@@ -92,6 +92,6 @@ export default function ProductDetail(){
             </Col>
         </Row>
     </Container>
-    </>);
+    );
     
 }

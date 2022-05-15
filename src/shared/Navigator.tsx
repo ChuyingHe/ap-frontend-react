@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component, useContext } from 'react';
 import {
   Navbar,
   Nav,
@@ -6,18 +6,17 @@ import {
   Form,
   FormControl,
   Button,
-  Col,
   NavDropdown,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Account } from '../asset/icons/account.svg';
 import { ReactComponent as Favorite } from '../asset/icons/favorite.svg';
 import { ReactComponent as ShoppingCart } from '../asset/icons/shopping_cart.svg';
+import { ProductsContext } from '../context/ProductsContext';
 import './_Navigator.scss';
 
-class APNavigator extends Component {
-  state = {};
-  render() {
+function Navigation() {
+    const products = useContext(ProductsContext); 
     return (
       <Navbar bg="light" expand="lg" className="font-josefin-medium">
         <Container className='flex-wrap-reverse'>
@@ -26,10 +25,17 @@ class APNavigator extends Component {
               className="me-auto my-2 my-lg-0 text-center"
               navbarScroll
             >
-              <Nav.Link as={Link} to="/home">Home</Nav.Link>
-              <Nav.Link as={Link} to="/products">Product</Nav.Link>
-              <Nav.Link as={Link} to="/about">About</Nav.Link>
-              <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+              <Nav.Link className="btns-navigator" as={Link} to="/home">Home</Nav.Link>
+              {/* <Nav.Link className="btns-navigator" as={Link} to="/products">Product</Nav.Link> */}
+              <NavDropdown className="btns-navigator" title="Product" id="navbarScrollingDropdown">
+                 {
+                    products && products.data?.map((item, index) => {
+                            return <NavDropdown.Item as={Link} to={`/products/${item.id}`} key={index}>{item.attributes?.name}</NavDropdown.Item>
+                    })
+                }
+                
+              </NavDropdown>
+              <Nav.Link className="btns-navigator" as={Link} to="/about">About</Nav.Link>
               {/* <Nav.Link as={Link} to="#" disabled>
                 Link
               </Nav.Link> */}
@@ -40,7 +46,7 @@ class APNavigator extends Component {
                   className="me-2"
                   aria-label="Search"
                 />
-                <Button variant="outline-success">Search</Button>
+                <Button variant='custom'>Search</Button>
               </Form>
             </Nav>
           </Navbar.Collapse>
@@ -67,7 +73,6 @@ class APNavigator extends Component {
         </Container>
       </Navbar>
     );
-  }
 }
 
-export default APNavigator;
+export default Navigation;

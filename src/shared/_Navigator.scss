@@ -1,3 +1,20 @@
-.btns-navigator {
-    color: rgba(0, 0, 0, 0.55);
+@import '../index.scss';
+
+.btns-navigator, .navbar-light .navbar-nav .nav-link {
+    color: $grey700;
+}
+
+.navbar-light .navbar-nav .nav-link:hover, .btns-navigator:hover {
+    color: $primary800;
+}
+
+.btn-custom {
+    color: $grey700;
+    border: 1px $grey700 solid;
+}
+
+.btn-custom:hover {
+    color: $primaryLight;
+    background-color: $primary800;
+    border: 1px $grey700 solid;
 }

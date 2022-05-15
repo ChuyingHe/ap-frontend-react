@@ -1,4 +1,15 @@
+@import '../index.scss';
 // between-element
 .detail-mb {
     margin-bottom: 10px;
 } 
+
+.card-body .btn-custom-prime, .btn-custom-prime {
+    color: $primaryLight;
+    background-color: $primaryMain;
+}
+
+.card-body .btn-custom-prime:hover,  .custom-prime:hover .btn-custom-prime {
+    color: $primaryLight;
+    background-color: $primary800;
+}
