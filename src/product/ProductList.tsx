@@ -11,11 +11,6 @@ function ProductList() {
   const productComponent =
     products?.data?.[parseFloat(params!.id!) - 1].attributes?.productComponent;
 
-  console.log(
-    params.id,
-    products?.data?.[parseFloat(params!.id!) - 1].attributes
-  );
-
   return (
     <Container className="pt-3">
       <Row className="g-3">
