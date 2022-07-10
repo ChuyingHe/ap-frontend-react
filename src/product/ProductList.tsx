@@ -7,14 +7,14 @@ import { useLocation } from 'react-router-dom';
 
 function ProductList() {
 
-const products = useContext(ProductsContext); 
-const location = useLocation();
-const idPage = location.pathname.split('/').pop();
-const productComponent = products?.data?.[parseFloat(idPage!)].attributes?.productComponent;
+    const products = useContext(ProductsContext); 
+    const location = useLocation();
+    const idPage = location.pathname.split('/').pop();
+    const productComponent = products?.data?.[parseFloat(idPage!)].attributes?.productComponent;
 
-console.log("location.pathname", productComponent);
+    console.log("location.pathname", productComponent);
 
-    
+        
     return (
         <Container className="pt-3">
               <Row className="g-3"  >

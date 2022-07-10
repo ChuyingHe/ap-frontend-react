@@ -13,7 +13,6 @@ export interface Product {
             productComponent?: Array<ProductComponent>;
         }
     }>
-
 }
 
 export interface ProductComponent {
