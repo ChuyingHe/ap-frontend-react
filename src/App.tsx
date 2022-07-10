@@ -11,10 +11,12 @@ import Favorite from './account/Favorite';
 import ShoppingCart from './order/ShoppingCart';
 import APHeader from './shared/Header';
 import Navigation from './shared/Navigator';
+import LoginControl from "./account/Login";
 import { WithProductsContext } from './context/ProductsContext';
 import { WithLoginContext } from './context/LoginContext';
 
 const App: React.FC = () => {
+  const [loginStatus, setLoginStatus] = useState(false);
 
   return (
     <>
@@ -25,7 +27,7 @@ const App: React.FC = () => {
           
           <WithLoginContext>
             <WithProductsContext>
-              <Navigation />
+              <Navigation login={loginStatus} setLogin={setLoginStatus} />
             </WithProductsContext>
           </WithLoginContext>
           {/* TODO: this should be the "Shopping cart buttons" */}
@@ -59,6 +61,9 @@ const App: React.FC = () => {
           
       </BrowserRouter>
     </div>
+
+    {/* OPTIONAL VIEWS */}
+    <LoginControl login={loginStatus} setLogin={setLoginStatus} />
   </>
   );
 };

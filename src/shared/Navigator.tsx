@@ -16,9 +16,10 @@ import { ReactComponent as ShoppingCart } from '../asset/icons/shopping_cart.svg
 import { ProductsContext } from '../context/ProductsContext';
 import './_Navigator.scss';
 import { LoginContext } from '../context/LoginContext';
+import { LoginStatus } from "../types/LoginModel";
 
 
-function Navigation() {
+const Navigation: React.FC<LoginStatus> = (props) => {
     const products = useContext(ProductsContext); 
     const loginStatus = useContext(LoginContext);
 
@@ -74,7 +75,7 @@ function Navigation() {
                 ) : (
                   // not logged in
                   <Dropdown.Menu>
-                    <Dropdown.Item>Login</Dropdown.Item>
+                    <Dropdown.Item onClick={() => props.setLogin(true)}>Login</Dropdown.Item>
                   </Dropdown.Menu>
                 ))}
                 
