@@ -13,6 +13,7 @@ import ShoppingCart from "./order/ShoppingCart";
 import APHeader from "./shared/Header";
 import APNavigator from "./shared/Navigator";
 import LoginControl from "./account/Login";
+// import PrivateRoute from ".shared/PrivateRoute";
 
 const App: React.FC = () => {
   const [loginStatus, setLoginStatus] = useState(false);

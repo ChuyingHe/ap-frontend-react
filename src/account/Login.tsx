@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { LoginStatus } from "../types/LoginStatusModel";
 
@@ -35,13 +35,20 @@ const LoginControl: React.FC<LoginStatus> = (props) => {
     return formIsValid;
   };
 
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log("on changed");
+  };
+
   const loginSubmit = (event: Event) => {
+    console.log("login info submitted!", event);
+
     event.preventDefault();
 
-    console.log("login info submitted!");
-
     handleValidation(event);
-    props.setLogin(false);
+
+    const requestURL = process.env.REACT_APP_STRAPI_LOCAL + "/api/auth/local";
+
+    // props.setLogin(false);
   };
 
   return (
@@ -66,6 +73,7 @@ const LoginControl: React.FC<LoginStatus> = (props) => {
               placeholder="Enter email"
               aria-describedby="emailHelp"
               onChange={(event) => setEmail(event.target.value)}
+              //  onChange={(event)=>onChange(event)}
             />
             <Form.Text
               id="loginformEmailHelp"
