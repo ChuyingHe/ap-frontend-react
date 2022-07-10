@@ -30,7 +30,10 @@ function Navigation() {
               <NavDropdown className="btns-navigator" title="Product" id="navbarScrollingDropdown">
                  {
                     products && products.data?.map((item, index) => {
-                            return <NavDropdown.Item as={Link} to={`/products/${item.id}`} key={index}>{item.attributes?.name}</NavDropdown.Item>
+                      console.log(item.id, index, item.attributes?.name)
+                            return <NavDropdown.Item as={Link} to={`/products/${item.id}`} key={index}>
+                                {item.attributes?.name}
+                            </NavDropdown.Item>
                     })
                 }
                 

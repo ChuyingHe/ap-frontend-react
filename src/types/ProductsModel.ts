@@ -1,4 +1,5 @@
 export const API_URL = `${process.env.REACT_APP_STRAPI_LOCAL}/api/products`;
+
 export const POPULATE = [
     '*',
     'productComponent.*',

@@ -27,8 +27,8 @@ const App: React.FC = () => {
           <Route path="/home" element={<LandingPage />} />
           <Route path="/" element={<Navigate replace to="/home" />} />
 
-            <Route path="products" element={<Navigate replace to="products/:1" />} />  
-            <Route path="products/:id" element={ <WithProductsContext><ProductList /></WithProductsContext>} />
+            <Route path="products" element={<Navigate replace to="products/:id" />} />  
+            <Route path="products/:id" element={ <WithProductsContext ><ProductList /></WithProductsContext>} />
           
             {/* <Route path="products/:id" element={<ProductDetail />} /> */}
 
