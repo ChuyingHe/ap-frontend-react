@@ -1,26 +1,22 @@
-import { Component, useContext } from 'react';
+import { useContext } from 'react';
 import {
-  Navbar,
-  Nav,
-  Container,
-  Form,
-  FormControl,
-  Button,
-  NavDropdown,
-  Dropdown
+  Button, Container, Dropdown, Form,
+  FormControl, Nav, Navbar, NavDropdown
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Account } from '../asset/icons/account.svg';
 import { ReactComponent as Favorite } from '../asset/icons/favorite.svg';
 import { ReactComponent as ShoppingCart } from '../asset/icons/shopping_cart.svg';
-import { ProductsContext } from '../context/ProductsContext';
-import './_Navigator.scss';
+import { CategoriesContext } from '../context/CategoriesContext';
 import { LoginContext } from '../context/LoginContext';
+import { ProductsContext } from '../context/ProductsContext';
 import { LoginStatus } from "../types/LoginModel";
+import './_Navigator.scss';
 
 
 const Navigation: React.FC<LoginStatus> = (props) => {
     const products = useContext(ProductsContext); 
+    const categories = useContext(CategoriesContext); 
     const loginStatus = useContext(LoginContext);
 
     return (
@@ -35,10 +31,9 @@ const Navigation: React.FC<LoginStatus> = (props) => {
               {/* <Nav.Link className="btns-navigator" as={Link} to="/products">Product</Nav.Link> */}
               <NavDropdown className="btns-navigator" title="Product" id="navbarScrollingDropdown">
                  {
-                    products && products.data?.map((item, index) => {
-                      console.log(item.id, index, item.attributes?.name)
-                            return <NavDropdown.Item as={Link} to={`/products/${item.id}`} key={index}>
-                                {item.attributes?.name}
+                    categories && categories.data?.map((item, index) => {
+                            return <NavDropdown.Item as={Link} to={`/categories/${item.id}`} key={index}>
+                                {item.attributes?.categoryName}
                             </NavDropdown.Item>
                     })
                 }
@@ -62,48 +57,48 @@ const Navigation: React.FC<LoginStatus> = (props) => {
           <Navbar.Toggle aria-controls="navbarScroll" />
 
           <Navbar.Brand className="d-flex ms-auto reverse">
-            
+          <Nav.Item>
+            <Dropdown as={Nav.Item}>
+              <Dropdown.Toggle as={Nav.Link}>
+                <Account />
+              </Dropdown.Toggle>
 
-            <Nav.Item>
-              <Dropdown as={Nav.Item}>
-                <Dropdown.Toggle as={Nav.Link}><Account /></Dropdown.Toggle>
-                {(loginStatus && loginStatus.loggedIn? (
-                  // logged in
-                  <Dropdown.Menu>
-                    &nbsp; Hi <i>{loginStatus.userName}</i> !
-                    <Dropdown.Divider />
-                    <Dropdown.Item > <Link to="/profile">Profile</Link></Dropdown.Item>
-                    <Dropdown.Item > <Link to="/profile">Previous orders</Link></Dropdown.Item>
-                  </Dropdown.Menu>
+              <Dropdown.Menu>
+                {loginStatus && loginStatus.loggedIn ? (
+                  <Dropdown.Item> </Dropdown.Item>
                 ) : (
-                  // not logged in
-                  <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => props.setLogin(true)}>Login</Dropdown.Item>
-                  </Dropdown.Menu>
-                ))}
-                
-              </Dropdown>
-            </Nav.Item>
+                  <Dropdown.Item onClick={() => props.setLogin(true)}>
+                    Login
+                  </Dropdown.Item>
+                )}
 
-            <Nav.Item>
-              <Nav.Link as={Link} to="/favorite" className="btns-navigator">
-                <Favorite />
-              </Nav.Link>
-            </Nav.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item>
+                  <Link to="/profile">Profile</Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link to="/profile">Previous orders</Link>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Nav.Item>
 
-            <Nav.Item>
-              <Nav.Link
-                as={Link} to="/shopping-cart"
-                className="btns-navigator"
-              >
-                <ShoppingCart />
-              </Nav.Link>
-            </Nav.Item>
+          <Nav.Item>
+            <Nav.Link as={Link} to="/favorite" className="btns-navigator">
+              <Favorite />
+            </Nav.Link>
+          </Nav.Item>
 
-          </Navbar.Brand>
+          <Nav.Item>
+            <Nav.Link as={Link} to="/shopping-cart" className="btns-navigator">
+              <ShoppingCart />
+            </Nav.Link>
+          </Nav.Item>
+        </Navbar.Brand>
         </Container>
       </Navbar>
     );
 }
 
 export default Navigation;
+

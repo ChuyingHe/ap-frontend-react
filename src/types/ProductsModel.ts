@@ -1,4 +1,5 @@
-export const API_URL = `${process.env.REACT_APP_STRAPI_LOCAL}/api/products`;
+export const API_URL_CATEGORIE = `${process.env.REACT_APP_STRAPI_LOCAL}/api/categories`;
+export const API_URL_PRODUCTS = `${process.env.REACT_APP_STRAPI_LOCAL}/api/products`;
 
 export const POPULATE = [
     '*',
@@ -6,17 +7,31 @@ export const POPULATE = [
     'productComponent.imgProduct.*'
 ];
 
-export interface Product {
-    data?: Array<{
-        id?: number,
-        attributes?:{
-            name?: string;
-            productComponent?: Array<ProductComponent>;
-        }
-    }>
+export interface CategoryAttributes {
+    categoryName?: string;
+    UID?: string;
+    products?: Products;
 }
 
-export interface ProductComponent {
+export interface CategoryDataSet {
+    id: number;
+    attributes: CategoryAttributes;
+}
+
+export interface Categorie {
+    data: Array<CategoryDataSet>;
+}
+
+export interface ProductDataSet {
+    id: number;
+    attributes: ProductAttributes;
+}
+
+export interface Products {
+    data: Array<ProductDataSet>;
+}
+
+export interface ProductAttributes {
     id: number,
     titleProduct: string,
     subtitleProduct: string,
@@ -26,12 +41,26 @@ export interface ProductComponent {
     productType: string,
     productSmell: string,
     productColor: string,
-    imgProduct: {
+    imgProduct?: {
         data: {
           id: number;
           attributes: { url: string, alternativeText: string };
         };
     }
+}
+
+export interface CategorieStrapi {
+    data?: {
+        data: Array<
+        {
+            id: number,
+            attributes:{
+                categoryName: string,
+                UID: string,
+                products: Products
+            }
+        }
+    >}
 }
 
 export interface ProductStrapi {
@@ -42,7 +71,7 @@ export interface ProductStrapi {
             attributes:{
                 name: string,
                 product_id: string,
-                productComponent: Array<ProductComponent>
+                productComponent: Array<ProductAttributes>
             }
         }
     >}

@@ -4,6 +4,7 @@ import Favorite from "./account/Favorite";
 import LoginControl from "./account/Login";
 import Profile from "./account/Profile";
 import "./App.css";
+import { WithCategoriesContext } from "./context/CategoriesContext";
 import { WithLoginContext } from "./context/LoginContext";
 import { WithProductsContext } from "./context/ProductsContext";
 import About from "./onepage/About";
@@ -24,9 +25,9 @@ const App: React.FC = () => {
           <APHeader />
 
           <WithLoginContext>
-            <WithProductsContext>
+            <WithCategoriesContext>
               <Navigation login={loginStatus} setLogin={setLoginStatus} />
-            </WithProductsContext>
+            </WithCategoriesContext>
           </WithLoginContext>
           {/* TODO: this should be the "Shopping cart buttons" */}
           {/* <ShoppingCartSideBar placement={'end'} name={'Shopping Cart'} /> */}
@@ -36,15 +37,15 @@ const App: React.FC = () => {
             <Route path="/" element={<Navigate replace to="/home" />} />
 
             <Route
-              path="products"
-              element={<Navigate replace to="products/:id" />}
+              path="categories"
+              element={<Navigate replace to="categories/:id" />}
             />
             <Route
-              path="products/:id"
+              path="categories/:id"
               element={
-                <WithProductsContext>
+                <WithCategoriesContext>
                   <ProductList />
-                </WithProductsContext>
+                </WithCategoriesContext>
               }
             />
 

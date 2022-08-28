@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Container, Row, Col, Image, Badge, Stack, Carousel, Button } from 'react-bootstrap';
 import './_ProductDetail.scss'
 import { useLocation } from 'react-router-dom';
-import { Product } from '../types/ProductsModel';
+import { Products } from '../types/ProductsModel';
 
 export default function ProductDetail(){
     const location = useLocation();

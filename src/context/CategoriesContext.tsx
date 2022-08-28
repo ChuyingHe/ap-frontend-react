@@ -2,18 +2,18 @@ import axios from 'axios';
 import { createContext, useEffect, useState } from 'react';
 
 // project import
-import { API_URL_PRODUCTS, POPULATE, Products, ProductStrapi } from '../types/ProductsModel';
+import { API_URL_CATEGORIE, POPULATE, Categorie, ProductStrapi, CategorieStrapi } from '../types/ProductsModel';
 
 // ==============================|| COLUMN CHART ||============================== //
 
-export const ProductsContext = createContext<Products>({data: []});
+export const CategoriesContext = createContext<Categorie>({data: []});
 
 
- export function WithProductsContext({ children } : {
+ export function WithCategoriesContext({ children } : {
    children: JSX.Element | JSX.Element[];
  }) {
 
-  const [products, setProducts] = useState<Products>({data: []});
+  const [categories, setCategories] = useState<Categorie>({data: []});
   // const [productComponent, setProductComponent] = useState<ProductComponent[]>([]);
 
 
@@ -25,14 +25,17 @@ export const ProductsContext = createContext<Products>({data: []});
 
    async function fetchProduct(): Promise<void> {
      try {
-       const respData: ProductStrapi = await axios.get(`${API_URL_PRODUCTS}/?populate=${POPULATE}`);     
+       const respData: CategorieStrapi = await axios.get(`${API_URL_CATEGORIE}/?populate=*`);     
       
-      console.log(respData)
-       if (!respData?.data) {
+
+       if (!respData?.data?.data) {
          return;
        }
 
- //      setProducts({ data: respData.data.data});
+       setCategories({data: respData.data.data} );
+       /*setTimeout( ()  => {
+        console.log('#1', respData.data, categories);
+       }, 100);*/
 
       // setProductComponent({
       //     productComponent: respData.data[0].attributes.productComponent
@@ -52,13 +55,13 @@ export const ProductsContext = createContext<Products>({data: []});
 
   return (
    
-    <ProductsContext.Provider
+    <CategoriesContext.Provider
       value={{
-        ...products
+        ...categories
       }}
       >
       {children}
-    </ProductsContext.Provider>
+    </CategoriesContext.Provider>
     
   );
 };
