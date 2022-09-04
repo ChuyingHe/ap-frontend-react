@@ -1,69 +1,64 @@
-import axios from 'axios';
-import { createContext, useEffect, useState } from 'react';
+import axios from "axios";
+import { createContext, useEffect, useState } from "react";
 
 // project import
-import { API_URL_CATEGORIE, POPULATE, Categorie, ProductStrapi, CategorieStrapi } from '../types/ProductsModel';
+import {
+  API_URL_CATEGORIE,
+  POPULATE,
+  Categorie,
+  ProductStrapi,
+  CategorieStrapi,
+  Products,
+  API_URL_PRODUCTS,
+  ProductAttributes,
+  ProductDataSet,
+  POPULATE_MEDIA,
+} from "../types/ProductsModel";
 
 // ==============================|| COLUMN CHART ||============================== //
 
-export const CategoriesContext = createContext<Categorie>({data: []});
+export const CategoriesContext = createContext<Categorie>({ data: [] });
 
-
- export function WithCategoriesContext({ children } : {
-   children: JSX.Element | JSX.Element[];
- }) {
-
-  const [categories, setCategories] = useState<Categorie>({data: []});
-  // const [productComponent, setProductComponent] = useState<ProductComponent[]>([]);
-
+export function WithCategoriesContext({
+  children,
+}: {
+  children: JSX.Element | JSX.Element[];
+}) {
+  const [categories, setCategories] = useState<Categorie>({ data: [] });
 
   useEffect(() => {
     // Update the document title using the browser API
     fetchProduct();
   }, []);
 
+  async function fetchProduct(): Promise<void> {
+    try {
+      const respData: CategorieStrapi = await axios.get(
+        `${API_URL_CATEGORIE}/?populate[0]=${POPULATE_MEDIA}`
+      );
 
-   async function fetchProduct(): Promise<void> {
-     try {
-       const respData: CategorieStrapi = await axios.get(`${API_URL_CATEGORIE}/?populate=*`);     
-      
+      if (!respData?.data?.data) {
+        return;
+      }
 
-       if (!respData?.data?.data) {
-         return;
-       }
+      setCategories({ data: respData.data.data });
 
-       setCategories({data: respData.data.data} );
-       /*setTimeout( ()  => {
-        console.log('#1', respData.data, categories);
-       }, 100);*/
 
-      // setProductComponent({
-      //     productComponent: respData.data[0].attributes.productComponent
-      // })
-        // respData.data.map((t: Product) => {
-        //   setProduct({
-        //       name: t.attributes.name,
-        //       productComponent: respData.data[0].attributes.productComponent
-        //   })
-             
-        //  })
-     } catch (error) {
-       console.error(`Error fetching product data: ${(error as Error).message}`, error);
-     }
-   }
-
+    } catch (error) {
+      console.error(
+        `Error fetching product data: ${(error as Error).message}`,
+        error
+      );
+    }
+  }
 
   return (
-   
     <CategoriesContext.Provider
       value={{
-        ...categories
+        ...categories,
       }}
-      >
+    >
       {children}
     </CategoriesContext.Provider>
-    
   );
-};
-
-
+}

@@ -1,11 +1,18 @@
 export const API_URL_CATEGORIE = `${process.env.REACT_APP_STRAPI_LOCAL}/api/categories`;
 export const API_URL_PRODUCTS = `${process.env.REACT_APP_STRAPI_LOCAL}/api/products`;
 
+
 export const POPULATE = [
     '*',
+    "media",
     'productComponent.*',
     'productComponent.imgProduct.*'
-];
+].join('&');
+
+export const POPULATE_MEDIA = [
+    'products',
+    "media"
+].join('.');
 
 export interface CategoryAttributes {
     categoryName?: string;
@@ -32,20 +39,21 @@ export interface Products {
 }
 
 export interface ProductAttributes {
-    id: number,
-    titleProduct: string,
-    subtitleProduct: string,
-    description: string,
-    weightProduct: number,
-    priceProduct: number,
-    productType: string,
-    productSmell: string,
-    productColor: string,
-    imgProduct?: {
-        data: {
+    name: string,
+    product_id: number,
+    price: number,
+    color: string,
+    size: string,
+    smell: string,
+    weight: number,
+    description?: string,
+    ingredients: Array<string>, 
+    media?:
+    {
+        data: Array<{
           id: number;
           attributes: { url: string, alternativeText: string };
-        };
+        }>;
     }
 }
 

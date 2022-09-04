@@ -2,26 +2,25 @@ import axios from "axios";
 import { MouseEvent, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { ProductAttributes } from "../types/ProductsModel";
+import { POPULATE, ProductAttributes } from "../types/ProductsModel";
 import "./_ProductDetail.scss";
+
 
 export interface ProductComponentProps {
   data: ProductAttributes;
 }
 
 export default function ProductItem({ data }: ProductComponentProps) {
-  // state = { firstPictureUrl: "" }
   const [firstUrl, setFristUrl] = useState<string>("");
+  
   let navigate = useNavigate();
   const Markdown = require("react-remarkable");
-  let img;
-  let alt;
-
-  console.log('ProductItem:', data);
-
-  if (data.imgProduct?.data) {
-    img = `${process.env.REACT_APP_STRAPI_LOCAL}${data.imgProduct.data.attributes.url}`;
-    alt = `${process.env.REACT_APP_STRAPI_LOCAL}${data.imgProduct.data.attributes.alternativeText}`;
+   let img;
+   let alt;
+   
+   if (data.media) {
+     img = `${process.env.REACT_APP_STRAPI_LOCAL}${data.media.data[0].attributes.url}`;
+     alt = `${process.env.REACT_APP_STRAPI_LOCAL}${data.media.data[0].attributes.alternativeText}`;
   } else {
     // TODO add Dummy img
     img = ``;
@@ -35,7 +34,7 @@ export default function ProductItem({ data }: ProductComponentProps) {
         process.env.REACT_APP_STRAPI_LOCAL +
           "/api/products/" +
           id +
-          "?populate=media"
+          `?populate=${POPULATE}`
       );
       const productData: any = await res.data.data;
 
@@ -51,13 +50,13 @@ export default function ProductItem({ data }: ProductComponentProps) {
   return (
     <Card
       className="custom-prime"
-      onClick={(e) => {
-        getProductDetail(e, data.id);
-      }}
+       onClick={(e) => {
+         getProductDetail(e, data.product_id);
+       }}
     >
       <Card.Img variant="top" src={img} alt={alt} />
       <Card.Body className="d-flex justify-content-between flex-column">
-        <Card.Title>{data?.titleProduct}</Card.Title>
+        <Card.Title>{data?.name}</Card.Title>
 
         <Markdown component={"span"} source={data.description} />
 
