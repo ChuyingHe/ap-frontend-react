@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { CategoriesContext } from "../context/CategoriesContext";
-import { Categorie, POPULATE, ProductAttributes, ProductDataSet } from "../types/ProductsModel";
+import { Categorie, ProductDataSet } from "../types/ProductsModel";
 import ProductItem from "./ProductItem";
 
 function ProductList(){
@@ -20,8 +20,8 @@ function ProductList(){
     const productRef = category.data.find( o => o.id === productID );
     if ( productRef ) {
       products = productRef.attributes.products?.data || [];
+      console.log("products", products);
     }
-    
   }
   
 
@@ -32,7 +32,7 @@ function ProductList(){
        {products.map((item, index) => {
             return (
               <Col className="d-grid" lg={3} md={4} sm={6} xs={12} key={index}>
-                <ProductItem data={item.attributes} />
+                <ProductItem data={item.attributes} id={item.id}/>
               </Col>
             );
            })} 

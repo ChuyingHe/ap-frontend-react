@@ -14,6 +14,7 @@ import ShoppingCart from "./order/ShoppingCart";
 import ProductList from "./product/ProductList";
 import APHeader from "./shared/Header";
 import Navigation from "./shared/Navigator";
+import ProductDetail from "./product/ProductDetail";
 
 const App: React.FC = () => {
   const [loginStatus, setLoginStatus] = useState(false);
@@ -49,7 +50,7 @@ const App: React.FC = () => {
               }
             />
 
-            {/* <Route path="products/:id" element={<ProductDetail />} /> */}
+            <Route path="products/:id" element={<ProductDetail />} /> 
 
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />

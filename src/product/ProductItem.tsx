@@ -5,22 +5,22 @@ import { useNavigate } from "react-router-dom";
 import { POPULATE, ProductAttributes } from "../types/ProductsModel";
 import "./_ProductDetail.scss";
 
-
 export interface ProductComponentProps {
   data: ProductAttributes;
+  id: number
 }
 
-export default function ProductItem({ data }: ProductComponentProps) {
+export default function ProductItem({ data, id }: ProductComponentProps) {
   const [firstUrl, setFristUrl] = useState<string>("");
-  
+
   let navigate = useNavigate();
   const Markdown = require("react-remarkable");
-   let img;
-   let alt;
-   
-   if (data.media) {
-     img = `${process.env.REACT_APP_STRAPI_LOCAL}${data.media.data[0].attributes.url}`;
-     alt = `${process.env.REACT_APP_STRAPI_LOCAL}${data.media.data[0].attributes.alternativeText}`;
+  let img;
+  let alt;
+
+  if (data.media) {
+    img = `${process.env.REACT_APP_STRAPI_LOCAL}${data.media.data[0].attributes.url}`;
+    alt = `${process.env.REACT_APP_STRAPI_LOCAL}${data.media.data[0].attributes.alternativeText}`;
   } else {
     // TODO add Dummy img
     img = ``;
@@ -28,7 +28,7 @@ export default function ProductItem({ data }: ProductComponentProps) {
   }
 
   // todo fix setFirstUrl
-  async function getProductDetail(event: MouseEvent, id: number) {
+  async function toProductDetail(event: MouseEvent, id: number) {
     try {
       const res = await axios.get(
         process.env.REACT_APP_STRAPI_LOCAL +
@@ -39,9 +39,13 @@ export default function ProductItem({ data }: ProductComponentProps) {
       const productData: any = await res.data.data;
 
       //setFristUrl(process.env.REACT_APP_STRAPI_LOCAL + data?.imgProduct.data.attributes.url)
-      const indexProd = productData.attributes.productComponent.map((item: any, index: number) => index);
-          navigate(  `../products/${id}?populate=${indexProd}`);
-      console.log("productData", productData.attributes.productComponent.map((item: any, index: number) =>  item.titleProduct ));
+      const indexProd = productData.attributes.productComponent.map(
+        (item: any, index: number) => index
+      );
+      console.log(`../products/${id}?populate=${indexProd}`);
+
+      navigate(`../products/${id}?populate=${indexProd}`);
+      // console.log("productData", productData.attributes.productComponent.map((item: any, index: number) =>  item.titleProduct ));
     } catch {
       console.log("ERROR");
     }
@@ -50,9 +54,9 @@ export default function ProductItem({ data }: ProductComponentProps) {
   return (
     <Card
       className="custom-prime"
-       onClick={(e) => {
-         getProductDetail(e, data.product_id);
-       }}
+      onClick={(e) => {
+        toProductDetail(e, id);
+      }}
     >
       <Card.Img variant="top" src={img} alt={alt} />
       <Card.Body className="d-flex justify-content-between flex-column">
