@@ -14,6 +14,7 @@ import ProductList from "./product/ProductList";
 import APHeader from "./shared/Header";
 import Navigation from "./shared/Navigator";
 import ProductDetail from "./product/ProductDetail";
+import { WithProductContext } from "./context/ProductContext";
 
 const App: React.FC = () => {
   const [loginStatus, setLoginStatus] = useState(false);
@@ -45,11 +46,18 @@ const App: React.FC = () => {
               element={
                 <WithCategoriesContext>
                   <ProductList />
-                </WithCategoriesContext>
+                </WithCategoriesContext>    
               }
             />
 
-            <Route path="products/:id" element={<ProductDetail />} />
+            <Route
+              path="products/:id"
+              element={
+                <WithProductContext>
+                  <ProductDetail />
+                </WithProductContext>
+              }
+            />
 
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />

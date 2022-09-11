@@ -15,10 +15,11 @@ import { ProductAttributes, Products } from "../types/ProductsModel";
 import { ProductContext } from "../context/ProductContext";
 
 export default function ProductDetail() {
+  const currentProduct: ProductAttributes = useContext(ProductContext);
+  console.log("currentProduct", currentProduct);
+
   const location = useLocation();
-  const [product, setProduct] = useState(
-    (location?.state as any)?.product as any
-  );
+
   // const currentProduct: ProductAttributes = useContext(ProductContext);
 
   function componentDidMount() {}
@@ -28,22 +29,19 @@ export default function ProductDetail() {
       <Row>
         <Col>
           <Carousel>
-            {product?.attributes?.media?.data.map(
-              (item: any, index: number) => {
-                return (
-                  <Carousel.Item key={index}>
-                    <img
-                      className="d-block w-100"
-                      src={
-                        process.env.REACT_APP_STRAPI_LOCAL +
-                        item?.attributes?.url
-                      }
-                      alt="First slide"
-                    />
-                  </Carousel.Item>
-                );
-              }
-            )}
+            {currentProduct.media?.data.map((item: any, index: number) => {
+              return (
+                <Carousel.Item key={index}>
+                  <img
+                    className="d-block w-100"
+                    src={
+                      process.env.REACT_APP_STRAPI_LOCAL + item?.attributes?.url
+                    }
+                    alt="First slide"
+                  />
+                </Carousel.Item>
+              );
+            })}
             {/* <Carousel.Item>
                         <img
                         className="d-block w-100"
@@ -66,17 +64,15 @@ export default function ProductDetail() {
             <Badge bg="dark" className="detail-mb">
               Seife
             </Badge>
-            <h1>{product?.attributes?.name}</h1>
+            <h1>{currentProduct?.name}</h1>
 
-            <div className="detail-mb">{product?.attributes?.description} </div>
+            <div className="detail-mb">{currentProduct?.description} </div>
 
             {/* EFFECT */}
             <Stack className="detail-mb" direction="horizontal" gap={3}>
-              {product?.attributes?.ingredients.map(
-                (item: any, index: number) => {
-                  return <Badge bg="success">{item}</Badge>;
-                }
-              )}
+              {currentProduct?.ingredients.map((item: any, index: number) => {
+                return <Badge bg="success">{item}</Badge>;
+              })}
             </Stack>
 
             {/* TODO: tsparticles: https://www.npmjs.com/package/react-tsparticles */}

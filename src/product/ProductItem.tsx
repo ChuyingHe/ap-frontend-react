@@ -37,11 +37,16 @@ export default function ProductItem({ data, id }: ProductComponentProps) {
           id +
           `?populate=${POPULATE}`
       );
-      console.log("response = ", res.data.data);
 
       const productData: any = await res.data.data;
+      console.log("data in ProductItem = ", productData);
 
-      navigate(`../products/${id}?populate=${POPULATE}`);
+      navigate(`../products/${id}?populate=${POPULATE}`
+      // , {
+      //   state: {
+      //     data: productData,
+      //   },
+      );
     } catch {
       console.log("ERROR");
     }

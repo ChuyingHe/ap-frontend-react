@@ -1,24 +1,49 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 // project import
 import {
   API_URL_PRODUCTS,
   POPULATE,
+  ProductAttributes,
   Products,
   ProductStrapi,
 } from "../types/ProductsModel";
 
 // ==============================|| COLUMN CHART ||============================== //
 
-export const ProductContext = createContext<Products>({ data: [] });
+export const ProductContext = createContext<ProductAttributes>({
+  name: "",
+  product_id: 0,
+  price: 0,
+  color: "",
+  size: "",
+  smell: "",
+  weight: 0,
+  description: "",
+  ingredients: [],
+});
 
 export function WithProductContext({
   children,
 }: {
   children: JSX.Element | JSX.Element[];
 }) {
-  const [products, setProducts] = useState<Products>({ data: [] });
+  const { id } = useParams();
+
+  const [product, setProduct] = useState<ProductAttributes>({
+    name: "",
+    product_id: 0,
+    price: 0,
+    color: "",
+    size: "",
+    smell: "",
+    weight: 0,
+    description: "",
+    ingredients: [],
+  });
+
   // const [productComponent, setProductComponent] = useState<ProductComponent[]>([]);
 
   useEffect(() => {
@@ -28,16 +53,26 @@ export function WithProductContext({
 
   async function fetchProduct(): Promise<void> {
     try {
-      const respData: ProductStrapi = await axios.get(
-        `${API_URL_PRODUCTS}/?populate=${POPULATE}`
+      const res = await axios.get(
+        process.env.REACT_APP_STRAPI_LOCAL +
+          "/api/products/" +
+          id +
+          `?populate=${POPULATE}`
       );
 
-      console.log(respData);
-      if (!respData?.data) {
-        return;
-      }
-
-      //      setProducts({ data: respData.data.data});
+      console.log("res", res);
+      setProduct({
+        name: res.data.data.attributes.name,
+        product_id: res.data.data.attributes.product_id,
+        price: res.data.data.attributes.price,
+        color: res.data.data.attributes.color || "",
+        size: res.data.data.attributes.size || "",
+        smell: res.data.data.attributes.smell || "",
+        weight: res.data.data.attributes.weight,
+        description: res.data.data.attributes.description,
+        ingredients: res.data.data.attributes.ingredients || [],
+        media: res.data.data.attributes.media,
+      });
 
       // setProductComponent({
       //     productComponent: respData.data[0].attributes.productComponent
@@ -60,7 +95,7 @@ export function WithProductContext({
   return (
     <ProductContext.Provider
       value={{
-        ...products,
+        ...product,
       }}
     >
       {children}
