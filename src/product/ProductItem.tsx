@@ -7,7 +7,7 @@ import "./_ProductDetail.scss";
 
 export interface ProductComponentProps {
   data: ProductAttributes;
-  id: number
+  id: number;
 }
 
 export default function ProductItem({ data, id }: ProductComponentProps) {
@@ -30,22 +30,18 @@ export default function ProductItem({ data, id }: ProductComponentProps) {
   // todo fix setFirstUrl
   async function toProductDetail(event: MouseEvent, id: number) {
     try {
+      console.log("1");
       const res = await axios.get(
         process.env.REACT_APP_STRAPI_LOCAL +
           "/api/products/" +
           id +
           `?populate=${POPULATE}`
       );
+      console.log("response = ", res.data.data);
+
       const productData: any = await res.data.data;
 
-      //setFristUrl(process.env.REACT_APP_STRAPI_LOCAL + data?.imgProduct.data.attributes.url)
-      const indexProd = productData.attributes.productComponent.map(
-        (item: any, index: number) => index
-      );
-      console.log(`../products/${id}?populate=${indexProd}`);
-
-      navigate(`../products/${id}?populate=${indexProd}`);
-      // console.log("productData", productData.attributes.productComponent.map((item: any, index: number) =>  item.titleProduct ));
+      navigate(`../products/${id}?populate=${POPULATE}`);
     } catch {
       console.log("ERROR");
     }

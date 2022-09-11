@@ -6,7 +6,6 @@ import Profile from "./account/Profile";
 import "./App.css";
 import { WithCategoriesContext } from "./context/CategoriesContext";
 import { WithLoginContext } from "./context/LoginContext";
-import { WithProductsContext } from "./context/ProductsContext";
 import About from "./onepage/About";
 import Contact from "./onepage/Contact";
 import LandingPage from "./onepage/LandingPage";
@@ -50,7 +49,7 @@ const App: React.FC = () => {
               }
             />
 
-            <Route path="products/:id" element={<ProductDetail />} /> 
+            <Route path="products/:id" element={<ProductDetail />} />
 
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
