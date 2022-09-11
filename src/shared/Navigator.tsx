@@ -77,7 +77,7 @@ const Navigation: React.FC<LoginStatus> = (props) => {
 
               <Dropdown.Menu>
                 {loginStatus && loginStatus.loggedIn ? (
-                  <Dropdown.Item> </Dropdown.Item>
+                  <Dropdown.Item>Ausloggen</Dropdown.Item>
                 ) : (
                   <Dropdown.Item onClick={() => props.setLogin(true)}>
                     Login

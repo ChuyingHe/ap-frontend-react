@@ -87,21 +87,7 @@ export default function ProductDetail() {
 
       <Row>
         <Col>
-          <div className="detail-mb">
-            This is the description of the soap. This is the description of the
-            soap. This is the description of the soap. This is the description
-            of the soap. This is the description of the soap. This is the
-            description of the soap. This is the description of the soap. This
-            is the description of the soap.This is the description of the soap.
-            This is the description of the soap. This is the description of the
-            soap. This is the description of the soap. This is the description
-            of the soap. This is the description of the soap. This is the
-            description of the soap.This is the description of the soap. This is
-            the description of the soap. This is the description of the soap.
-            This is the description of the soap. This is the description of the
-            soap. This is the description of the soap. This is the description
-            of the soap.{" "}
-          </div>
+          <div className="detail-mb">{currentProduct?.description}</div>
         </Col>
       </Row>
     </Container>
